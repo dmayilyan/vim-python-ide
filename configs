@@ -1,3 +1,5 @@
+filetype plugin on
+
 "
 " Theme options
 set t_Co=256
@@ -6,21 +8,46 @@ set background=dark    " Setting dark mode
 """ Hilight search and set numbers
 set hlsearch
 highlight Search guibg=#af005f ctermbg=125
+" Press F4 to toggle highlighting on/off, and show current value.
+noremap <F4> :set hlsearch! hlsearch?<CR>
+
 """" clear highlight with <esc> after a search
 nnoremap <C-h> :noh<return>
-set number
+" windo if &filetype != 'nerdtree' && &filetype != 'tagbar' | set number | set relativenumber | endif
+set number relativenumber
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+
+set cursorline
+set scrolloff=3
+set foldmethod=indent
+set nofoldenable
+
+" Make yank to clipboard
+set clipboard+=unnamedplus
 
 set cc=80
+
+" CodeStats configuration
+let g:codestats_api_key = 'CodeStats API key here'
 
 " Airline configuration
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
 
+" Rainbow parenthesis configuration
+let g:rainbow_active = 1
+let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
+let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
+
 " Nerdtree configuration
-map <C-n> :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.pyc$', '\~$']
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
+map <F12> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.pyc$', '\~$', 'node_modules', '__pycache__']
+" autocmd VimEnter * NERDTree
+" autocmd VimEnter * wincmd p
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
@@ -31,7 +58,7 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 :nnoremap <C-X> :bp<bar>sp<bar>bn<bar>bd<CR>
 
 " File searchs
-map <C-p> :Files<CR>
+nmap <C-p> :Files<CR>
 
 " Ale Configuration
 """" Better formatting fo worp/ale
@@ -42,9 +69,13 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%] [%...code...%]'
 let g:ale_completion_enabled = 1
 """ Customize linters that are turned on
 let g:ale_linters = {
-	\   'python': ['flake8'],
+	\   'python': ['flake8', 'bandit', 'mypy'],
+	\}
+let g:ale_fixers = {
+	\   'python': ['black', 'isort', 'autoimport'],
 	\}
 let g:ale_set_highlights = 0
+nmap <F9> :ALEFix<CR> :w<CR>
 
 " Fix keys
 set backspace=2
@@ -54,5 +85,33 @@ let g:UltiSnipsListSnippets='<c-tab>'
 let g:UltiSnipsJumpForwardTrigger='<c-j>'
 let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 
+" Close Nerdtree if it is the only pane
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Make tabs visible
+set list
+set listchars=tab:>-
+
+" Change yank highlight timeout
+let g:highlightedyank_highlight_duration = 500
+
 nmap <F8> :TagbarToggle<CR>
 
+" map \[[ to run the code
+nnoremap <silent> <leader>[[ :%w ! python3<CR>
+
+" split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+
+set undofile
+set undodir=~/.vim/undo
+
+" Nerdcommenter configuration
+let g:NERDSpaceDelims = 1 
+
+" Jedi configuration
+let g:jedi#use_tabs_not_buffers = 1

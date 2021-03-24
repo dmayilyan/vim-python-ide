@@ -18,6 +18,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
 Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
+Plug 'frazrepo/vim-rainbow'
+Plug 'https://gitlab.com/code-stats/code-stats-vim.git'
+Plug 'https://github.com/machakann/vim-highlightedyank.git'
+Plug 'preservim/nerdcommenter'
+Plug 'ervandew/supertab'
 " Initialize plugin system
 call plug#end()
-"
