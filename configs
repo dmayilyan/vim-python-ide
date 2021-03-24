@@ -29,7 +29,7 @@ set nofoldenable
 " Make yank to clipboard
 set clipboard+=unnamedplus
 
-set cc=80
+set cc=80,120
 
 " CodeStats configuration
 let g:codestats_api_key = 'CodeStats API key here'

@@ -143,12 +143,14 @@ Powered by:
 |--------------------------|------------------|-----------------|
 | Toogle Nerdtree          | Normal           | `crtl + n`      |
 | toogle Tagbar            | Normal           | `f8`            |
+| Launch ALE fixer         | Normal           | `f9`            |
 | Look for file            | Normal           | `crtl + p`      |
 | Goto definition          | Normal           | `crtl + ]`      |
 | Show docstring           | Normal           | `K`             |
 | Extract method           | Normal/Visual    | `crlt + c r m`  |
 | Auto complete            | Insert           | `crtl + space`  |
-| Expand snippet           | Insert           |`tab`            |
+| Expand snippet           | Insert           | `tab`           |
+| Execute with python      | Insert           | `\[[`           |
 
 ## Commands
 
@@ -156,4 +158,4 @@ Powered by:
 |--------------------------------|----------------|
 | Look for string                | `:Rg <string>` |
 | git status                     | `:Gstatus`     |
-| git diff                       | `:Gdiff`        |
+| git diff                       | `:Gdiff`       |
