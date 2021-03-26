@@ -28,7 +28,7 @@ python3 python3-devel tcl-devel
 ### Installation process
 
 ```bash
-git clone https://github.com/rapphil/vim-python-ide.git && \
+git clone git@github.com:dmayilyan/vim-python-ide.git && \
 cd vim-python-ide && ./install.sh
 ```
 
@@ -119,6 +119,17 @@ Powered by:
 
  * [jedi-vim](https://github.com/davidhalter/jedi-vim)
 
+### Other coding helpers
+
+Tab for autocompletion. Commenting support. Highlighting yanks and parenthesis.
+
+Powered by:
+
+ * [Rainbow parenthesis](https://github.com/frazrepo/vim-rainbow)
+ * [Highlighted Yank](https://github.com/machakann/vim-highlightedyank)
+ * [Nerd Commenter](https://github.com/preservim/nerdcommenter)
+ * [Supertab](https://github.com/ervandew/supertab)
+
 ### Snippets
 
 Snippets save time while you type and creates standardization for your code.
@@ -137,13 +148,19 @@ Powered by:
  * [vim-fugitive](https://github.com/tpope/vim-fugitive)
  * [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 
+### Track coding performance
+
+Track your day to day coding performance.
+
+ * [CodeStats](https://gitlab.com/code-stats/code-stats-vim.git) (add your API key)
+
 ## Key bindings
 
 | Action                   | Mode             | key binding     |
 |--------------------------|------------------|-----------------|
-| Toogle Nerdtree          | Normal           | `crtl + n`      |
-| toogle Tagbar            | Normal           | `f8`            |
-| Launch ALE fixer         | Normal           | `f9`            |
+| Toggle Nerdtree          | Normal           | `F12`      |
+| Toggle Tagbar            | Normal           | `F8`            |
+| Launch ALE fixer         | Normal           | `F9`            |
 | Look for file            | Normal           | `crtl + p`      |
 | Goto definition          | Normal           | `crtl + ]`      |
 | Show docstring           | Normal           | `K`             |
