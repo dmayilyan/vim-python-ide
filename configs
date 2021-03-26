@@ -25,6 +25,7 @@ set cursorline
 set scrolloff=3
 set foldmethod=indent
 set nofoldenable
+set inccommand=split
 
 " Make yank to clipboard
 set clipboard+=unnamedplus
